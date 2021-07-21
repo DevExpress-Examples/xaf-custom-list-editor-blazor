@@ -6,9 +6,15 @@
     <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="ListEditorImages\DressedToKill.png" />
+    <None Remove="ListEditorImages\EternallyYours.png" />
+    <None Remove="ListEditorImages\TheLastTimeISawParis.png" />
     <None Remove="Model.DesignedDiffs.xafml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ListEditorImages\DressedToKill.png" />
+    <EmbeddedResource Include="ListEditorImages\EternallyYours.png" />
+    <EmbeddedResource Include="ListEditorImages\TheLastTimeISawParis.png" />
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
   </ItemGroup>
   <ItemGroup>
