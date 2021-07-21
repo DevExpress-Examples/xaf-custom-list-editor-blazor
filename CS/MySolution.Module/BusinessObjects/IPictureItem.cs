@@ -1,4 +1,3 @@
-﻿
 namespace MySolution.Module.BusinessObjects {
     public interface IPictureItem {
         byte[] Image { get; }
