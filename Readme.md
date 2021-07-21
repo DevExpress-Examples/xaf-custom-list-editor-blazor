@@ -3,7 +3,7 @@
 This example demonstrates how to implement a custom List Editor that shows images in an ASP.NET Core Blazor application. 
 The List Editor displays a Razor component with custom objects. These objects implement a custom [IPictureItem](./CS/MySolution.Module/BusinessObjects/IPictureItem.cs) interface to store images and their captions.
 
-![](images/blazor-custom-list-editor.png)
+![](blazor-custom-list-editor.png)
 
 To add a custom List Editor to your ASP.NET Core Blazor application, define the required [data model](./CS/MySolution.Module/BusinessObjects/PictureItem.cs) and implement the following components in the _MySolution.Module.Blazor_ project:
 
