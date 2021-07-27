@@ -28,31 +28,31 @@ namespace MySolution.Module.DatabaseUpdate {
         }
 
         private void CreateCustomListEditorObjects() {
-            PictureItem image1 = ObjectSpace.FindObject<PictureItem>(CriteriaOperator.Parse("Text='Eternally Yours by Tay Garnett'"));
+            PictureItem image1 = ObjectSpace.FindObject<PictureItem>(CriteriaOperator.Parse("Text='Green'"));
             if (image1 == null) {
                 image1 = ObjectSpace.CreateObject<PictureItem>();
-                image1.Text = "Eternally Yours by Tay Garnett";
-                image1.Image = GetImageFromResource("MySolution.Module.ListEditorImages.EternallyYours.png");
+                image1.Text = "Green";
+                image1.Image = GetImageFromResource("MySolution.Module.ListEditorImages.green.png");
                 image1.Save();
             }
-            PictureItem image2 = ObjectSpace.FindObject<PictureItem>(CriteriaOperator.Parse("Text='Sherlock Holmes - Dressed to Kill by Roy William Neill'"));
+            PictureItem image2 = ObjectSpace.FindObject<PictureItem>(CriteriaOperator.Parse("Text='Red'"));
             if (image2 == null) {
                 image2 = ObjectSpace.CreateObject<PictureItem>();
-                image2.Text = "Sherlock Holmes - Dressed to Kill by Roy William Neill";
-                image2.Image = GetImageFromResource("MySolution.Module.ListEditorImages.DressedToKill.png");
+                image2.Text = "Red";
+                image2.Image = GetImageFromResource("MySolution.Module.ListEditorImages.red.png");
                 image2.Save();
             }
-            PictureItem image3 = ObjectSpace.FindObject<PictureItem>(CriteriaOperator.Parse("Text='The Last Time I Saw Paris by Richard Brooks'"));
+            PictureItem image3 = ObjectSpace.FindObject<PictureItem>(CriteriaOperator.Parse("Text='Blue'"));
             if (image3 == null) {
                 image3 = ObjectSpace.CreateObject<PictureItem>();
-                image3.Text = "The Last Time I Saw Paris by Richard Brooks";
-                image3.Image = GetImageFromResource("MySolution.Module.ListEditorImages.TheLastTimeISawParis.png");
+                image3.Text = "Blue";
+                image3.Image = GetImageFromResource("MySolution.Module.ListEditorImages.blue.png");
                 image3.Save();
             }
-            PictureItem image4 = ObjectSpace.FindObject<PictureItem>(CriteriaOperator.Parse("Text='Teenagers from Outer Space by Tom Graeff'"));
+            PictureItem image4 = ObjectSpace.FindObject<PictureItem>(CriteriaOperator.Parse("Text='Black'"));
             if (image4 == null) {
                 image4 = ObjectSpace.CreateObject<PictureItem>();
-                image4.Text = "Teenagers from Outer Space by Tom Graeff";
+                image4.Text = "Black";
                 image4.Save();
             }
 
