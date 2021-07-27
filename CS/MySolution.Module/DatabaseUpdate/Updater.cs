@@ -19,6 +19,7 @@ namespace MySolution.Module.DatabaseUpdate {
         public override void UpdateDatabaseAfterUpdateSchema() {
             base.UpdateDatabaseAfterUpdateSchema();
             CreateCustomListEditorObjects();
+            ObjectSpace.CommitChanges();
         }
         public override void UpdateDatabaseBeforeUpdateSchema() {
             base.UpdateDatabaseBeforeUpdateSchema();
