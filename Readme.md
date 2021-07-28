@@ -3,7 +3,7 @@
 
 * [PictureItemListView.razor](./CS/MySolution.Module.Blazor/PictureItemListView.razor)
 * [PictureItemListViewModel.cs](./CS/MySolution.Module.Blazor/PictureItemListViewModel.cs)
-* PictureItemListViewRenderer.razor](./CS/MySolution.Module.Blazor/PictureItemListViewRenderer.razor)
+* [PictureItemListViewRenderer.razor](./CS/MySolution.Module.Blazor/PictureItemListViewRenderer.razor)
 * [BlazorCustomListEditor.cs](./CS/MySolution.Module.Blazor/BlazorCustomListEditor.cs)
 <!-- default file list end -->
 
