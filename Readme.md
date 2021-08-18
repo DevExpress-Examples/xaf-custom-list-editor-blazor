@@ -1,4 +1,4 @@
-# How to: Use a Custom Component to Implement List Editor (Blazor)
+# XAF Blazor - Use a Custom Component to Implement List Editor
 
 This example demonstrates how to implement a custom List Editor that shows images in an ASP.NET Core Blazor application. 
 The List Editor displays a Razor component with custom objects. These objects implement a custom [IPictureItem](./CS/MySolution.Module/BusinessObjects/IPictureItem.cs) interface to store images and their captions.
