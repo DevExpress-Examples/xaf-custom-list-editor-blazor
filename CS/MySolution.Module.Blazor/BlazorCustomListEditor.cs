@@ -26,7 +26,6 @@ namespace MySolution.Module.Blazor {
             RenderFragment IComponentContentHolder.ComponentContent =>
                 componentContent ??= CreateComponent();
         }
-
         private IPictureItem[] selectedObjects = Array.Empty<IPictureItem>();
         public BlazorCustomListEditor(IModelListView model) : base(model) { }
         protected override object CreateControlsCore() =>
