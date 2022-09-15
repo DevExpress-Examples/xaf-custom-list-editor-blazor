@@ -13,7 +13,7 @@ See the following help topic for more information: [How to: Use a Custom Compone
 ![](custom-list-editor.png)
 
 <!-- default file list -->
-## Files to Look at
+## Files to Review
 
 * [PictureItemListView.razor](./CS/MySolution.Module.Blazor/PictureItemListView.razor)
 * [PictureItemListViewModel.cs](./CS/MySolution.Module.Blazor/PictureItemListViewModel.cs)
