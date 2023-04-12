@@ -1,0 +1,32 @@
+﻿@using CustomEditor.Module.BusinessObjects;
+@using Microsoft.AspNetCore.Components.Web
+
+@if (Data is not null) {
+    <div class="row">
+        @foreach (var item in Data) {
+            <div class="col-auto" style="cursor: pointer;"
+                 @onclick=@(async () => await ItemClick.InvokeAsync(item))>
+                @if (item.Image is null) {
+                    <div class="border d-flex justify-content-center align-items-center"
+                         style="height:150px; width: 104px;">
+                        No image
+                    </div>
+                }
+                else {
+                    <img src="data:image/png;base64,@Convert.ToBase64String(item.Image)" alt=@item.Text
+                         style="height:150px; width: 104px;">
+                }
+                <div class="text-center" style="width: 104px;">
+                    @item.Text
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    [Parameter]
+    public IEnumerable<IPictureItem> Data { get; set; }
+    [Parameter]
+    public EventCallback<IPictureItem> ItemClick { get; set; }
+}

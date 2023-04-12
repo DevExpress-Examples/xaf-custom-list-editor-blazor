@@ -2,7 +2,7 @@
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Xpo;
 
-namespace MySolution.Module.BusinessObjects {
+namespace CustomEditor.Module.BusinessObjects {
     [DefaultClassOptions]
     public class PictureItem : BaseObject, IPictureItem {
         private byte[] image;

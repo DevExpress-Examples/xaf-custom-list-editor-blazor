@@ -5,7 +5,7 @@ using DevExpress.ExpressApp.Updating;
 using DevExpress.Xpo;
 using DevExpress.ExpressApp.Xpo;
 using DevExpress.Persistent.BaseImpl;
-using MySolution.Module.BusinessObjects;
+using CustomEditor.Module.BusinessObjects;
 
 namespace CustomEditor.Module.DatabaseUpdate;
 
@@ -24,21 +24,21 @@ public class Updater : ModuleUpdater {
         if (image1 == null) {
             image1 = ObjectSpace.CreateObject<PictureItem>();
             image1.Text = "Green";
-            image1.Image = GetImageFromResource("MySolution.Module.ListEditorImages.green.png");
+            image1.Image = GetImageFromResource("CustomEditor.Module.ListEditorImages.green.png");
             image1.Save();
         }
         PictureItem image2 = ObjectSpace.FindObject<PictureItem>(CriteriaOperator.Parse("Text='Red'"));
         if (image2 == null) {
             image2 = ObjectSpace.CreateObject<PictureItem>();
             image2.Text = "Red";
-            image2.Image = GetImageFromResource("MySolution.Module.ListEditorImages.red.png");
+            image2.Image = GetImageFromResource("CustomEditor.Module.ListEditorImages.red.png");
             image2.Save();
         }
         PictureItem image3 = ObjectSpace.FindObject<PictureItem>(CriteriaOperator.Parse("Text='Blue'"));
         if (image3 == null) {
             image3 = ObjectSpace.CreateObject<PictureItem>();
             image3.Text = "Blue";
-            image3.Image = GetImageFromResource("MySolution.Module.ListEditorImages.blue.png");
+            image3.Image = GetImageFromResource("CustomEditor.Module.ListEditorImages.blue.png");
             image3.Save();
         }
         PictureItem image4 = ObjectSpace.FindObject<PictureItem>(CriteriaOperator.Parse("Text='Black'"));

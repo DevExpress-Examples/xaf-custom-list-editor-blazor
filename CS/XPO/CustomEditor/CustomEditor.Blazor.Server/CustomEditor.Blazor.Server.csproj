@@ -20,4 +20,10 @@
     <PackageReference Include="DevExpress.ExpressApp.Blazor" Version="22.2.5" />
     <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="22.2.5" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CustomEditor.Module\CustomEditor.Module.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Editors\CustomList\" />
+  </ItemGroup>
 </Project>
