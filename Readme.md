@@ -15,10 +15,10 @@ See the following help topic for more information: [How to: Use a Custom Compone
 <!-- default file list -->
 ## Files to Review
 
-* [PictureItemListView.razor](./CS/MySolution.Module.Blazor/PictureItemListView.razor)
-* [PictureItemListViewModel.cs](./CS/MySolution.Module.Blazor/PictureItemListViewModel.cs)
-* [PictureItemListViewRenderer.razor](./CS/MySolution.Module.Blazor/PictureItemListViewRenderer.razor)
-* [BlazorCustomListEditor.cs](./CS/MySolution.Module.Blazor/BlazorCustomListEditor.cs)
+* [PictureItemListView.razor](./CS/EF/CustomEditorEF/CustomEditorEF.Blazor.Server/Editors/CustomList/PictureItemListView.razor)
+* [PictureItemListViewModel.cs](./CS/EF/CustomEditorEF/CustomEditorEF.Blazor.Server/Editors/CustomList/PictureItemListViewModel.cs)
+* [PictureItemListViewRenderer.razor](./CS/EF/CustomEditorEF/CustomEditorEF.Blazor.Server/Editors/CustomList/PictureItemListViewRenderer.razor)
+* [BlazorCustomListEditor.cs](./CS/EF/CustomEditorEF/CustomEditorEF.Blazor.Server/Editors/CustomList/BlazorCustomListEditor.cs)
 <!-- default file list end -->
 
 ## Documentation
