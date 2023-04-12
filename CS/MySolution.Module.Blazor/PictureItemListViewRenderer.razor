@@ -1,8 +1,0 @@
-﻿<PictureItemListView Data=@ComponentModel.Data ItemClick=@ComponentModel.OnItemClick />
-
-@code {
-    public static RenderFragment Create(PictureItemListViewModel componentModel) =>
-    @<PictureItemListViewRenderer ComponentModel=@componentModel />;
-[Parameter]
-public PictureItemListViewModel ComponentModel { get; set; }
-}
