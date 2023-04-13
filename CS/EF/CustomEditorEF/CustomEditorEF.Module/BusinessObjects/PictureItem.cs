@@ -9,4 +9,3 @@ public class PictureItem : BaseObject, IPictureItem {
     public virtual byte[] Image { get; set; }
     public virtual string Text { get; set; }
 }
-
