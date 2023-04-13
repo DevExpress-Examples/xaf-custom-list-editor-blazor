@@ -5,7 +5,7 @@ using DevExpress.Persistent.BaseImpl.EF.PermissionPolicy;
 using DevExpress.Persistent.BaseImpl.EF;
 using DevExpress.ExpressApp.Design;
 using DevExpress.ExpressApp.EFCore.DesignTime;
-using CustomEditor.Module.BusinessObjects;
+using CustomEditorEF.Module.BusinessObjects;
 
 namespace CustomEditorEF.Module.BusinessObjects;
 

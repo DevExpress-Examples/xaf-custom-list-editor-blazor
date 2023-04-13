@@ -4,7 +4,7 @@ using DevExpress.Persistent.Base;
 using DevExpress.ExpressApp.Updating;
 using DevExpress.ExpressApp.EF;
 using DevExpress.Persistent.BaseImpl.EF;
-using CustomEditor.Module.BusinessObjects;
+using CustomEditorEF.Module.BusinessObjects;
 
 namespace CustomEditorEF.Module.DatabaseUpdate;
 

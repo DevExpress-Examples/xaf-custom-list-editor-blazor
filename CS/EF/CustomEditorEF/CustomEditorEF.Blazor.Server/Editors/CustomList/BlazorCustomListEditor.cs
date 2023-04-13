@@ -2,7 +2,7 @@
 using System.Collections;
 using System.ComponentModel;
 using System.Linq;
-using CustomEditor.Module.BusinessObjects;
+using CustomEditorEF.Module.BusinessObjects;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Blazor;
 using DevExpress.ExpressApp.Blazor.Components;

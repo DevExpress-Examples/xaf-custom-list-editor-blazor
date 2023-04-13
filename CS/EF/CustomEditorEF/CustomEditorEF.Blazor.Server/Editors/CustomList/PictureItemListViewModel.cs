@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using CustomEditor.Module.BusinessObjects;
+using CustomEditorEF.Module.BusinessObjects;
 using DevExpress.ExpressApp.Blazor.Components.Models;
 
 namespace CustomEditorEF.Blazor.Server.Editors.CustomList {
