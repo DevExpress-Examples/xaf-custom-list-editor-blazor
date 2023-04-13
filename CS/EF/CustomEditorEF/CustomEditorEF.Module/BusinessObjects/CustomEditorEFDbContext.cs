@@ -35,7 +35,7 @@ public class CustomEditorEFDesignTimeDbContextFactory : IDesignTimeDbContextFact
 public class CustomEditorEFEFCoreDbContext : DbContext {
 	public CustomEditorEFEFCoreDbContext(DbContextOptions<CustomEditorEFEFCoreDbContext> options) : base(options) {
 	}
-    public DbSet<PictureItem> PictureItem { get; set; }
+    public DbSet<PictureItem> PictureItems { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         base.OnModelCreating(modelBuilder);
