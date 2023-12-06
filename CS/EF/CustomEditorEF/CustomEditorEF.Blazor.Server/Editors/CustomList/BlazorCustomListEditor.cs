@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Linq;
-using CustomEditorEF.Module.BusinessObjects;
+﻿using CustomEditorEF.Module.BusinessObjects;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Blazor;
 using DevExpress.ExpressApp.Blazor.Components;
 using DevExpress.ExpressApp.Editors;
 using DevExpress.ExpressApp.Model;
 using Microsoft.AspNetCore.Components;
+using System.Collections;
+using System.ComponentModel;
 
 namespace CustomEditorEF.Blazor.Server.Editors.CustomList {
     [ListEditor(typeof(IPictureItem))]
@@ -45,12 +43,19 @@ namespace CustomEditorEF.Blazor.Server.Editors.CustomList {
         protected override void OnControlsCreated() {
             if (Control is PictureItemListViewHolder holder) {
                 holder.ComponentModel.ItemClick += ComponentModel_ItemClick;
+                holder.ComponentModel.SelectionChanged += ComponentModel_SelectionChanged;
             }
             base.OnControlsCreated();
+        }
+        private void ComponentModel_SelectionChanged(object sender,
+                                                        PictureItemListViewModelSelectionChangedEventArgs e) {
+            selectedObjects = e.SelectedItems.ToArray();
+            OnSelectionChanged();
         }
         public override void BreakLinksToControls() {
             if (Control is PictureItemListViewHolder holder) {
                 holder.ComponentModel.ItemClick -= ComponentModel_ItemClick;
+                holder.ComponentModel.SelectionChanged -= ComponentModel_SelectionChanged;
             }
             AssignDataSourceToControl(null);
             base.BreakLinksToControls();

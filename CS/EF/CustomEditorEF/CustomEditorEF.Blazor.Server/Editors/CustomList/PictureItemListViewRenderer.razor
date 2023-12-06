@@ -1,8 +1,10 @@
-﻿<PictureItemListView Data=@ComponentModel.Data ItemClick=@ComponentModel.OnItemClick />
+﻿<PictureItemListView
+    Data=@ComponentModel.Data 
+    ItemClick=@ComponentModel.OnItemClick 
+    SelectionChanged="@ComponentModel.OnSelectionChanged" />
 
 @code {
     public static RenderFragment Create(PictureItemListViewModel componentModel) =>
-    @<PictureItemListViewRenderer ComponentModel=@componentModel />;
-[Parameter]
-public PictureItemListViewModel ComponentModel { get; set; }
+        @<PictureItemListViewRenderer ComponentModel=@componentModel />;
+    [Parameter] public PictureItemListViewModel ComponentModel { get; set; }
 }
