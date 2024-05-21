@@ -28,12 +28,10 @@
 }
 
 @code {
-    [Parameter]
-    public IEnumerable<IPictureItem> Data { get; set; }
-    [Parameter]
-    public EventCallback<IPictureItem> ItemClick { get; set; }
-    [Parameter]
-    public EventCallback<IEnumerable<IPictureItem>> SelectionChanged { get; set; }
+    [Parameter] public IEnumerable<IPictureItem> Data { get; set; }
+    [Parameter] public EventCallback<IPictureItem> ItemClick { get; set; }
+    [Parameter] public EventCallback<IEnumerable<IPictureItem>> SelectionChanged { get; set; }
+
     private List<IPictureItem> selectedItems = new();
 
     protected override async Task OnParametersSetAsync() {

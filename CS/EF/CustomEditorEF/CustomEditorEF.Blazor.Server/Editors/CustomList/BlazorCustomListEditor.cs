@@ -2,6 +2,7 @@
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Blazor;
 using DevExpress.ExpressApp.Blazor.Components;
+using DevExpress.ExpressApp.Blazor.Components.Models;
 using DevExpress.ExpressApp.Editors;
 using DevExpress.ExpressApp.Model;
 using Microsoft.AspNetCore.Components;
@@ -10,71 +11,65 @@ using System.ComponentModel;
 
 namespace CustomEditorEF.Blazor.Server.Editors.CustomList {
     [ListEditor(typeof(IPictureItem))]
-    public class BlazorCustomListEditor : ListEditor {
-        public class PictureItemListViewHolder : IComponentContentHolder {
-            private RenderFragment componentContent;
-            public PictureItemListViewHolder(PictureItemListViewModel componentModel) {
-                ComponentModel =
-                    componentModel ?? throw new ArgumentNullException(nameof(componentModel));
-            }
-            private RenderFragment CreateComponent() =>
-                ComponentModelObserver.Create(ComponentModel,
-                                                PictureItemListViewRenderer.Create(ComponentModel));
-            public PictureItemListViewModel ComponentModel { get; }
-            RenderFragment IComponentContentHolder.ComponentContent =>
-                componentContent ??= CreateComponent();
-        }
+    public class BlazorCustomListEditor : ListEditor, IComponentContentHolder {
+        private RenderFragment _componentContent;
         private IPictureItem[] selectedObjects = Array.Empty<IPictureItem>();
+
+        public PictureItemListViewModel ComponentModel { get; private set; }
+
+        public RenderFragment ComponentContent {
+            get {
+                _componentContent ??= ComponentModelObserver.Create(ComponentModel, ComponentModel.GetComponentContent());
+                return _componentContent;
+            }
+        }
+
         public BlazorCustomListEditor(IModelListView model) : base(model) { }
-        protected override object CreateControlsCore() =>
-            new PictureItemListViewHolder(new PictureItemListViewModel());
+
+        private void BindingList_ListChanged(object sender, ListChangedEventArgs e) {
+            UpdateDataSource(DataSource);
+        }
+
+        private void UpdateDataSource(object dataSource) {
+            ComponentModel.Data = (dataSource as IEnumerable)?.OfType<IPictureItem>().OrderBy(i => i.Text);
+        }
+
+        protected override object CreateControlsCore() {
+            ComponentModel = new PictureItemListViewModel();
+            ComponentModel.ItemClick = EventCallback.Factory.Create<IPictureItem>(this, (item) => {
+                selectedObjects = new IPictureItem[] { item };
+                OnSelectionChanged();
+                OnProcessSelectedItem();
+            });
+            ComponentModel.SelectionChanged = EventCallback.Factory.Create<IEnumerable<IPictureItem>>(this, (items) => {
+                selectedObjects = items.ToArray();
+                OnSelectionChanged();
+            });
+            return ComponentModel;
+        }
+
         protected override void AssignDataSourceToControl(object dataSource) {
-            if (Control is PictureItemListViewHolder holder) {
-                if (holder.ComponentModel.Data is IBindingList bindingList) {
+            if(ComponentModel is not null) {
+                if(ComponentModel.Data is IBindingList bindingList) {
                     bindingList.ListChanged -= BindingList_ListChanged;
                 }
-                holder.ComponentModel.Data =
-                    (dataSource as IEnumerable)?.OfType<IPictureItem>().OrderBy(i => i.Text);
-                if (dataSource is IBindingList newBindingList) {
+                UpdateDataSource(dataSource);
+                if(dataSource is IBindingList newBindingList) {
                     newBindingList.ListChanged += BindingList_ListChanged;
                 }
             }
         }
-        protected override void OnControlsCreated() {
-            if (Control is PictureItemListViewHolder holder) {
-                holder.ComponentModel.ItemClick += ComponentModel_ItemClick;
-                holder.ComponentModel.SelectionChanged += ComponentModel_SelectionChanged;
-            }
-            base.OnControlsCreated();
-        }
-        private void ComponentModel_SelectionChanged(object sender,
-                                                        PictureItemListViewModelSelectionChangedEventArgs e) {
-            selectedObjects = e.SelectedItems.ToArray();
-            OnSelectionChanged();
-        }
+
         public override void BreakLinksToControls() {
-            if (Control is PictureItemListViewHolder holder) {
-                holder.ComponentModel.ItemClick -= ComponentModel_ItemClick;
-                holder.ComponentModel.SelectionChanged -= ComponentModel_SelectionChanged;
-            }
             AssignDataSourceToControl(null);
             base.BreakLinksToControls();
         }
-        public override void Refresh() {
-            if (Control is PictureItemListViewHolder holder) {
-                holder.ComponentModel.Refresh();
-            }
-        }
-        private void BindingList_ListChanged(object sender, ListChangedEventArgs e) {
-            Refresh();
-        }
-        private void ComponentModel_ItemClick(object sender,
-                                                PictureItemListViewModelItemClickEventArgs e) {
-            selectedObjects = new IPictureItem[] { e.Item };
-            OnSelectionChanged();
-            OnProcessSelectedItem();
-        }
+
+        public override void Refresh() => UpdateDataSource(DataSource);
+
         public override SelectionType SelectionType => SelectionType.Full;
+
         public override IList GetSelectedObjects() => selectedObjects;
+
     }
 }

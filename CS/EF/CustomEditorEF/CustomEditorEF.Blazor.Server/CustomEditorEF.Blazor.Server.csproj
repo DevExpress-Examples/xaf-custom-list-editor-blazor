@@ -18,11 +18,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Editors\CustomList\PictureItemListView.razor" />
-    <None Include="Editors\CustomList\PictureItemListViewRenderer.razor" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.ExpressApp.Blazor" Version="22.2.5" />
-    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="22.2.5" />
+    <PackageReference Include="DevExpress.ExpressApp.Blazor" Version="24.1.2-beta" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="24.1.2-beta" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CustomEditorEF.Module\CustomEditorEF.Module.csproj" />

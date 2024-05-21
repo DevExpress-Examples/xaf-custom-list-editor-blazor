@@ -1,5 +1,6 @@
 ﻿using CustomEditorEF.Module.BusinessObjects;
 using DevExpress.ExpressApp.Blazor.Components.Models;
+using Microsoft.AspNetCore.Components;
 
 namespace CustomEditorEF.Blazor.Server.Editors.CustomList {
     public class PictureItemListViewModel : ComponentModelBase {
@@ -7,24 +8,14 @@ namespace CustomEditorEF.Blazor.Server.Editors.CustomList {
             get => GetPropertyValue<IEnumerable<IPictureItem>>();
             set => SetPropertyValue(value);
         }
-        public void Refresh() => RaiseChanged();
-        public void OnItemClick(IPictureItem item) =>
-            ItemClick?.Invoke(this, new PictureItemListViewModelItemClickEventArgs(item));
-        public event EventHandler<PictureItemListViewModelItemClickEventArgs> ItemClick;
-        public void OnSelectionChanged(IEnumerable<IPictureItem> selectedItems) =>
-            SelectionChanged?.Invoke(this, new PictureItemListViewModelSelectionChangedEventArgs(selectedItems));
-        public event EventHandler<PictureItemListViewModelSelectionChangedEventArgs> SelectionChanged;
-    }
-    public class PictureItemListViewModelItemClickEventArgs : EventArgs {
-        public PictureItemListViewModelItemClickEventArgs(IPictureItem item) {
-            Item = item;
+        public EventCallback<IPictureItem> ItemClick {
+            get => GetPropertyValue<EventCallback<IPictureItem>>();
+            set => SetPropertyValue(value);
         }
-        public IPictureItem Item { get; }
-    }
-    public class PictureItemListViewModelSelectionChangedEventArgs : EventArgs {
-        public PictureItemListViewModelSelectionChangedEventArgs(IEnumerable<IPictureItem> selectedItems) {
-            SelectedItems = selectedItems;
+        public EventCallback<IEnumerable<IPictureItem>> SelectionChanged {
+            get => GetPropertyValue<EventCallback<IEnumerable<IPictureItem>>>();
+            set => SetPropertyValue(value);
         }
-        public IEnumerable<IPictureItem> SelectedItems { get; }
+        public override Type ComponentType => typeof(PictureItemListView);
     }
 }
