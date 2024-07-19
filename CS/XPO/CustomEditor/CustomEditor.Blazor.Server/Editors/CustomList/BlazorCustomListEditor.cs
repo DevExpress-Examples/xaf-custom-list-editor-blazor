@@ -31,7 +31,9 @@ namespace CustomEditor.Blazor.Server.Editors.CustomList {
         }
 
         private void UpdateDataSource(object dataSource) {
-            ComponentModel.Data = (dataSource as IEnumerable)?.OfType<IPictureItem>().OrderBy(i => i.Text);
+            if(ComponentModel is not null) {
+                ComponentModel.Data = (dataSource as IEnumerable)?.OfType<IPictureItem>().OrderBy(i => i.Text);
+            }
         }
 
         protected override object CreateControlsCore() {
