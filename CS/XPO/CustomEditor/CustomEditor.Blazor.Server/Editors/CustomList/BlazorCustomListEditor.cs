@@ -5,13 +5,15 @@ using DevExpress.ExpressApp.Blazor.Components;
 using DevExpress.ExpressApp.Blazor.Components.Models;
 using DevExpress.ExpressApp.Editors;
 using DevExpress.ExpressApp.Model;
+using DevExpress.ExpressApp.SystemModule;
+using DevExpress.ExpressApp.Utils;
 using Microsoft.AspNetCore.Components;
 using System.Collections;
 using System.ComponentModel;
 
 namespace CustomEditor.Blazor.Server.Editors.CustomList {
     [ListEditor(typeof(IPictureItem))]
-    public class BlazorCustomListEditor : ListEditor, IComponentContentHolder {
+    public class BlazorCustomListEditor : ListEditor, IComponentContentHolder, IControlOrderProvider {
         private RenderFragment _componentContent;
         private IPictureItem[] selectedObjects = Array.Empty<IPictureItem>();
 
@@ -32,7 +34,7 @@ namespace CustomEditor.Blazor.Server.Editors.CustomList {
 
         private void UpdateDataSource(object dataSource) {
             if(ComponentModel is not null) {
-                ComponentModel.Data = (dataSource as IEnumerable)?.OfType<IPictureItem>().OrderBy(i => i.Text);
+                ComponentModel.Data = (dataSource as IEnumerable)?.OfType<IPictureItem>().OrderBy(i => i.Text).ToList<IPictureItem>();
             }
         }
 
@@ -72,6 +74,28 @@ namespace CustomEditor.Blazor.Server.Editors.CustomList {
         public override SelectionType SelectionType => SelectionType.Full;
 
         public override IList GetSelectedObjects() => selectedObjects;
-
+        public int GetIndexByObject(object obj) {
+            var items = ListHelper.GetList(ComponentModel.Data);
+            var index = items.IndexOf(obj);
+            if (index == int.MinValue) {
+                index = -1;
+            }
+            return index;
+        }
+        public object GetObjectByIndex(int index) {
+            var items = ListHelper.GetList(ComponentModel.Data);
+            return items[index];
+        }
+        public IList GetOrderedObjects() {
+            var orderedObjects = new List<object>();
+            var items = ListHelper.GetList(ComponentModel.Data);
+            for (var rowVisibleIndex = 0; rowVisibleIndex < items.Count; ++rowVisibleIndex) {
+                var record = items[rowVisibleIndex];
+                if (record != null) {
+                    orderedObjects.Add(record);
+                }
+            }
+            return orderedObjects;
+        }
     }
 }
