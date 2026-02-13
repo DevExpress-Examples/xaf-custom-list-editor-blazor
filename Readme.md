@@ -29,7 +29,7 @@ See the following help topic for more information: [How to: Use a Custom Compone
 ## More GitHub Examples
 * [XAF Blazor - Use a Custom View Item to Add a Button to a Detail View](https://github.com/DevExpress-Examples/xaf-custom-view-item-blazor)
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=xaf-custom-list-editor-blazor&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=xaf-custom-list-editor-blazor&~~~was_helpful=no)
 
