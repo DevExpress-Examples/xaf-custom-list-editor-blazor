@@ -70,21 +70,18 @@ namespace CustomEditor.Blazor.Server.Editors.CustomList {
         }
 
         public override void Refresh() => UpdateDataSource(DataSource);
+        public override IList GetSelectedObjects() => selectedObjects;
 
         public override SelectionType SelectionType => SelectionType.Full;
 
-        public override IList GetSelectedObjects() => selectedObjects;
         public int GetIndexByObject(object obj) {
-            var items = ListHelper.GetList(ComponentModel.Data);
-            var index = items.IndexOf(obj);
-            if (index == int.MinValue) {
-                index = -1;
-            }
-            return index;
+            var ordered = GetOrderedObjects();
+            return ordered.IndexOf(obj);
         }
         public object GetObjectByIndex(int index) {
-            var items = ListHelper.GetList(ComponentModel.Data);
-            return items[index];
+            var ordered = GetOrderedObjects();
+            if (index < 0 || index >= ordered.Count) return null;
+            return ordered[index];
         }
         public IList GetOrderedObjects() {
             var orderedObjects = new List<object>();
